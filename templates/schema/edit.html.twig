@@ -1,0 +1,13 @@
+{% extends 'home.html.twig' %}
+
+{% block title %}Edit Schema{% endblock %}
+
+{% block body %}
+    <h1>Edit Schema</h1>
+
+    {{ include('schema/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('schema_index') }}">back to list</a>
+
+    {{ include('schema/_delete_form.html.twig') }}
+{% endblock %}

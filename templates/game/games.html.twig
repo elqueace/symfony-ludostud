@@ -1,0 +1,16 @@
+{% extends 'master.html.twig' %}
+
+{% block body %}
+
+        <h1 class="font-white">
+          <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Quizzo</a>
+        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+          {% for _domain in listDomains %}
+            <a class="dropdown-item waves-effect waves-light" href="{{ path('question_answer_index', {'domain': _domain['domain'] }) }}">{{_domain["domain"]}}</a>
+          {% endfor %}
+          <a class="dropdown-item waves-effect waves-light" href="{{ path('question_answer_index', {'domain': 'all' }) }}">Tous les domaines</a>
+
+        </div>
+        </h1>
+
+{% endblock %}

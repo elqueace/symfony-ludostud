@@ -1,0 +1,189 @@
+/*congrats*/
+         .congrats {
+             
+         }
+         .congrats-container {
+         width: 100px;
+         float: left;
+         padding: 1rem;
+         }
+         .congrats-box {
+         width: 100px;
+         height: 100px;
+         border-radius: 50%;
+         position: relative;
+         animation: move-up 2s forwards 10s;
+         margin: 0 auto;
+         }
+         .congrats-box:after {
+         width: 1px;
+         content: "";
+         height: 5px;
+         position: absolute;
+         bottom: 0;
+         display: block;
+         left: 50%;
+         animation: fadeout 1s forwards;
+         animation-delay: 1s;
+         }
+         .congrats-box.m3 {
+         animation: move-up-3 2s forwards;
+         }
+         .congrats-box.m3 {
+         animation: move-up-2 2s forwards;
+         }
+         .cracker.solid {
+         border: solid rgba(255, 225, 200, 1) 1px;
+         }
+         .cracker.dotted {
+         border: dotted rgba(255, 205, 100, 1) 10px;
+         }
+         .cracker {
+         position: absolute;
+         border: dashed rgba(255, 255, 250, 1) 2px;
+         width: 100px;
+         height: 100px;
+         opacity: 0;
+         border-radius: 50%;
+         animation: burst 6s 1 2s;
+         }
+         .a1 {
+         animation-duration: 8s;
+         }
+         .d1 {
+         animation-delay: 10s;
+         }
+         .a2 {
+         animation-duration: 4s;
+         }
+         .d2 {
+         animation-delay: 16s;
+         }
+         .a3 {
+         animation-duration: 6s;
+         }
+         .d3 {
+         animation-delay: 24s;
+         }
+         .a4 {
+         animation-duration: 2s;
+         }
+         .d4 {
+         animation-delay: 30s;
+         }
+         .m1 {
+         animation-delay: 100ms;
+         }
+         .m2 {
+         animation-delay: 300ms;
+         }
+         .m3 {
+         animation-delay: 600ms;
+         }
+         @keyframes move-up {
+         0% {
+         transform: translateY(500px);
+         }
+         50% {
+         transform: translateY(500px);
+         }
+         100% {
+         transform: translateY(100px);
+         }
+         }
+         @keyframes move-up-2 {
+         0% {
+         transform: translateY(500px);
+         }
+         50% {
+         transform: translateY(500px);
+         }
+         100% {
+         transform: translateY(150px);
+         }
+         }
+         @keyframes move-up-3 {
+         0% {
+         transform: translateY(500px);
+         }
+         50% {
+         transform: translateY(500px);
+         }
+         100% {
+         transform: translateY(220px);
+         }
+         }
+         @keyframes fadeout {
+         0% {
+         background: rgba(255, 250, 255, .8);
+         }
+         50% {
+         background: rgba(251, 250, 255, .8);
+         height: 100px;
+         }
+         100% {
+         background: rgba(0, 0, 0, 0);
+         height: 120px;
+         }
+         }
+         @keyframes burst {
+         0% {
+         transform: scale(0);
+         opacity: 1;
+         }
+         50% {
+         transform: scale(0);
+         opacity: 1;
+         }
+         100% {
+         transform: scale(2);
+         opacity: 0;
+         }
+         }
+         .p0 {
+         padding: 0.5rem;
+         }
+         .p1 {
+         padding: 1rem;
+         }
+         .p2 {
+         padding: 2rem;
+         }
+         .p3 {
+         padding: 3rem;
+         }
+         .p4 {
+         padding: 4rem 1rem;
+         }
+         .p5 {
+         padding: 5rem 2rem;
+         }
+         .congrats-title {
+         position: absolute;
+         left: 0;
+         right: 0;
+         top: 20%;
+         color: #f76524;
+         text-align: center;
+         font-size: 10rem;
+         font-style: italic;
+         animation: move-up 2s forwards;
+         text-shadow: #ffe45e 0 0 30px, #e5c654 1px 0 10px;
+         }
+         .congrats-subtitle {
+         position: absolute;
+         left: 0;
+         right: 0;
+         top: 1000%;
+         color: #f76524;
+         text-align: center;
+         font-size: 5rem;
+         font-style: italic;
+         animation: move-up 2s forwards;
+         text-shadow: #ffe45e 0 0 30px, #e5c654 1px 0 10px;
+         }
+
+.modal{
+    position: absolute;
+    top: -10%;
+}

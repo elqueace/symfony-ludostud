@@ -1,0 +1,140 @@
+{% extends 'home.html.twig' %}
+
+{% block title %}Hello QuizzoController!{% endblock %}
+
+{% block body %}
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="font-white">
+
+  </h1>
+    <h1 style="text-align:center" class="font-white">{{ domain }} - {{ question_answers|length }} questions</h1>
+
+  <a  href="{{ path('question_answer_new',{'domain': domain }) }}" class="btn-floating btn-lg btn-primary"><i class="fas fa-plus"></i></a>
+  </div>
+</div>
+<div class="row no-gutters" style="background-color:#fff;">
+  <div class="col-lg-2" style="background-color:#fff;padding:35px 20px 20px 20px">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-4 col-md-offset-4">
+              <ul id="treeview">
+                  <li data-icon-cls="fa fa-inbox" data-expanded="true">Inbox
+                      <ul>
+                          <li><b>Today (2)</b></li>
+                          <li>Monday</li>
+                          <li>Last Week</li>
+                      </ul>
+                  </li>
+                  <li data-icon-cls="fa fa-trash">Trash
+                  </li>
+                  <li data-icon-cls="fa fa-calendar">Calendar
+                      <ul>
+                          <li>Day</li>
+                          <li>Week</li>
+                          <li>Month</li>
+                      </ul>
+                  </li>
+                  <li data-icon-cls="fa fa-user">Contacts
+                      <ul>
+                          <li>Alexander Stein</li>
+                          <li>John Doe</li>
+                          <li>Paul Smith</li>
+                          <li>Steward Lynn</li>
+                      </ul>
+                  </li>
+                  <li data-icon-cls="fa fa-folder">Folders
+                      <ul>
+                          <li>Backup</li>
+                          <li>Deleted</li>
+                          <li>Projects</li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
+
+</div>
+  <div class="col-lg-10">
+<table width="100%" class="table table-hover " style="background-color:white;">
+  <col style="width:20%">
+  <col style="width:65%">
+  <col style="width:10%">
+  <col style="width:5%">
+    <thead>
+    <tr >
+      <th><h5>Questions</h5></th>
+      <th><h5>Reponses</h5></th>
+      <th><h5>Date</h5></th>
+      <th><h5>Gestion</h5></th>
+    </tr>
+  </thead>
+  <tbody >
+    {% for question_answer in question_answers %}
+    <tr id="{{ question_answer.id }}">
+      <td style="cursor: pointer;" class="question-col" >{{ question_answer.question | raw }}</td>
+      <td class="answer-col blurred">
+        {{ question_answer.answer | raw }}
+
+      {% if question_answer.imgpath != null %}
+        <button data-toggle="modal" data-target="#mediaModad{{ question_answer.id }}" class="btn btn-primary">Media</button>
+        <!-- Modal -->
+        <div class="modal fade" id="mediaModad{{ question_answer.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+          aria-hidden="true">
+
+          <!-- Add .modal-dialog-centered to .modal-dialog to vertically center the modal -->
+          <div class=" modal-fluid  modal-dialog modal-dialog-centered" role="document">
+
+
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{ question_answer.question }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <img src="{{ asset(question_answer.imgpath) }}" style="width: 100%;height: 600px" />
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- /Modal -->
+      {% endif %}
+      </td>
+      <td>
+        {{ question_answer.date_created }}
+      </td>
+      <td class="button-col">
+        <a style="margin:5px;" class="btn-floating btn-warning" id="try-fail" onclick="incrementTries(this)"><i>{{ question_answer.fail }}</i></a>
+        <a style="margin:5px;" class="btn-floating btn-success" id="try-success" onclick="incrementTries(this)"><i>{{ question_answer.success }}</i></a>
+        <hr>
+        <form method="post" action="{{ path('question_answer_delete', {'id': question_answer.id}) }}">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ question_answer.id) }}">
+            <a class="btn-floating btn-md btn-danger"><button><i class="fas fa-trash"></i></button></a>
+            <a href="{{ path('question_answer_edit', {'id': question_answer.id}) }}" class="btn-floating btn-md btn-primary"><i class="fas fa-edit"></i></a>
+        </form>
+
+      </td>
+
+    </tr>
+
+
+    {% else %}
+        <tr>
+            <td colspan="5">no records found</td>
+        </tr>
+    {% endfor %}
+
+
+  </tbody>
+</table>
+</div>
+</div>
+
+
+{% endblock %}

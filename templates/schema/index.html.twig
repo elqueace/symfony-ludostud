@@ -1,0 +1,46 @@
+{% extends 'home.html.twig' %}
+
+{% block title %}Schema index{% endblock %}
+
+{% block body %}
+    <h1>Mes schémas</h1>
+    
+<table class="table card table-hover">
+    <thead>
+        <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Path</th>
+                <th>Description</th>
+                <th>Owner</th>
+                <th>actions</th>
+            </tr>
+    </thead>
+    <tbody>
+        {% for schema in schemas %}
+            <tr>
+                <td scope="row">{{ schema.id }}</td>
+                <td>{{ schema.title }}</td>
+                <td>{{ schema.path }}</td>
+                <td>{{ schema.description }}</td>
+                <td>{{ schema.owner }}</td>
+                <td>
+                    <a href="{{ path('schema_show', {'id': schema.id}) }}"><i class="fa fa-user"></i></a>
+                    <a href="{{ path('schema_edit', {'id': schema.id}) }}"><i class="fa fa-pencil"></i></a>
+                <a class="red-text"><i class="fa fa-times"></i></a>
+            </td>
+                <td>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+   
+<button class=" waves-effect waves-light" ><a href="{{ path('schema_new') }}"><i class="fas fa-plus"></i></a></button>
+    
+{% endblock %}

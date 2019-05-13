@@ -1,0 +1,13 @@
+{{ form_start(form) }}
+{{ form_row(form.question) }}
+{{ form_row(form.answer) }}
+    <button class="btn btn-default">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+
+<button id="editQ" class="btn btn-info" onclick="getFormField('question');edit();" type="button">Edit Question</button>
+<button id="saveQ" class="btn btn-primary" onclick="save();setFormField('question');" type="button">Save Question</button>
+
+<button id="editA" class="btn btn-info" onclick="getFormField('answer');edit();" type="button">Edit Answer</button>
+<button id="saveA" class="btn btn-primary" onclick="save();setFormField('answer');" type="button">Save Answer</button>
+
+<div class="click2edit"></div>

@@ -1,0 +1,323 @@
+{% extends 'home.html.twig' %}
+
+{% block title %}Game{% endblock %}
+
+{% block body %}
+ <audio id="audio_congrats1">
+            <source src="{{ asset('sounds/congrats0.mp3') }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <audio id="audio_congrats0">
+            <source src="{{ asset('sounds/congrats1.mp3') }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <audio id="audio_congrats2">
+            <source src="{{ asset('sounds/congrats2.mp3') }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <audio id="audio_bg_roof">
+            <source src="{{ asset('sounds/plants-vs-zombies-music-the-roof-horde.mp3') }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+<!--Main layout-->
+        <div style="margin-bottom: 50px;" class="  mx-lg-5">
+            <div class="container-fluid ">
+                <!-- Heading -->
+                <div class=" mb-4 wow fadeIn">
+                    <!--Card content-->
+                    <div class="card-body d-sm-flex justify-content-between">
+                        <h4 class="mb-2 mb-sm-0 pt-1">
+                            <a href="index.php" style="color:#b3de1d;text-shadow: 0px 1px 2px #222, 0px 1px 2px #333;">Ludostud</a>
+                            <span><img style="width:30px;height:20px" src="{{ asset('img/arrow.png') }}"></span>
+                            <a href="index.php" style="color: #b3de1d">Games</a>
+                            <span><img style="width:30px;height:20px" src="{{ asset('img/arrow.png') }}"></span>
+                            <span style="color: #fff;font-style: normal;
+                                font-weight: bold;">Schemator</span>
+                        </h4>
+                        <div id="clockdiv" >
+                  <div style="display: none">
+                    <span id="days"></span>
+                    <div class="smalltext">Days</div>
+                  </div>
+                  <div style="display: none">
+                    <span id="hours"></span>
+                    <div class="smalltext">Hours</div>
+                  </div>
+                  <div>
+                    <span id="minutes"></span>
+                    <div class="smalltext">Minutes</div>
+                  </div>
+                  <div>
+                    <span id="seconds"></span>
+                    <div class="smalltext">Seconds</div>
+                  </div>
+                </div>
+                    </div>
+                </div>
+                <!-- Heading -->
+                <!--Grid row-->
+                <div class="row wow fadeIn mb-4" style="margin-top: -20px">
+                    <div class="col-md-12 text-center">
+                        <h4 id="presentation" style="color: white;display:block">Réalise ce shema. Tu as 10 secondes pour le retenir</h4>
+                            <button id="playSchemator" type="button" class="btn waves-effect waves-light" style="background-color:#b3de1d;" onclick="playAudioBg(),hideSchema(),showBoard();">Mon schéma</button>
+                            <button id="playSchemator" type="button" class="pulse btn waves-effect waves-light" style="background-color:#b3de1d;" onclick="playAudioBg(),hideSchema(),showBoard();">Jouer</button>
+
+                            <button type="button" class=" bounce btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#congratulationModal" onclick="playAudio()">Félicitations</button>
+
+                    </div>
+                </div>
+
+                    <!--Grid row-->
+                    <!--Grid row-->
+                <div class="row wow fadeIn">
+                    <!--Grid column-->
+                    <div class="col-md-4 " >
+                        <!-- Rotating card -->
+                        <div class="card-wrapper">
+                            <div id="card-1" class="schema-visible card card-rotating text-center" style="border: 1px solid #000000;    
+    
+    -moz-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+    -webkit-box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+    box-shadow: inset 2px 2px 2px rgba(255, 255, 255, .4), inset -2px -2px 2px rgba(0, 0, 0, .4);
+}">
+                                <!-- Front Side -->
+                                <div class="face front">
+                                    <!-- Content -->
+                                    <div class="card-body rotate-btn" data-card="card-1" style="background-image: url({{ asset('img/schemas/schema-test.png')}});width:400px;height:400px;padding:2px">
+                                        
+                                    </div>
+                                </div>
+                                <!-- Front Side -->
+                                <!-- Back Side -->
+                                <div class="face back card text-center  " style="background-color: #b3de1d" onclick="hideSchema();">
+                                    <div data-card="card-1" class="card-body rotate-btn" style="vertical-align: middle;">
+                                                        <span style="font-family:Freckle Face;font-size: 300px;color: #3b5998;" >?</span>
+
+                                    </div>
+                                </div>
+                                <!-- Back Side -->
+                            </div>
+                        </div>
+                        <!-- Rotating card -->
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    
+
+                    <div style="visibility:hidden;" id ="testCreate" class=" col-md-6" >
+                        
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    <div class=" col-md-2">
+                        <div class=" " style="height: 400px ">
+
+                            <div class="tossing" id="hour-glass">
+                              <div id="glass"></div>
+                              <div id="sand-stream"></div>
+                              <div id="top-sand"></div>
+                              <div id="bottom-sand"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+            </div>
+            <!-- Central Modal  -->
+            <div class="modal fade" id="congratulationModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-fluid" role="document" >
+                    <div class="modal-content" >
+                        <!-- congrats -->
+                        <!-- Modal content-->
+                        <div id="congrats" class="congrats col p1" >
+                            <div class="congrats-box m2 d2">
+                                <div class="cracker solid a1">    </div>
+                                <div class="cracker dotted a2"> </div>
+                            </div>
+                            <div class="congrats-container">
+                                <div class="congrats-box m1">
+                                    <div class="cracker a3"></div>
+                                    <div class="cracker dotted a3"> </div>
+                                </div>
+                            </div>
+                            <div class="congrats-container">
+                                <div class="congrats-box m1 d1">
+                                    <div class="cracker a2"></div>
+                                    <div class="cracker dotted a2"></div>
+                                </div>
+                            </div>
+                            <div class="congrats-container">
+                                <div class="congrats-box m3 d4">
+                                    <div class="cracker solid a2"></div>
+                                    <div class="cracker dotted a3"></div>
+                                </div>
+                            </div>
+                            <div class="congrats-container p1">
+                                <div class="congrats-box m2 d3">
+                                    <div class="cracker solid a1"></div>
+                                    <div class="cracker dotted a2"></div>
+                                </div>
+                            </div>
+                            <div class="congrats-container p2">
+                                <div class="congrats-box m1 d1">
+                                    <div class="cracker a1"></div>
+                                    <div class="cracker dotted a2"> </div>
+                                </div>
+                            </div>
+                            <div class="congrats-container p2">
+                                <div class="congrats-box m3 d2">
+                                    <div class="cracker dotted a4"></div>
+                                    <div class="cracker a2"></div>
+                                </div>
+                            </div>
+                            <div class="congrats-container p3">
+                                <div class="congrats-box m1 d2">
+                                    <div class="cracker a2"></div>
+                                    <div class="cracker a3"></div>
+                                </div>
+                            </div>
+                            <div class="congrats-container p3">
+                                <div class="congrats-box m2 d4">
+                                    <div class="cracker solid a2"></div>
+                                    <div class="cracker a1"></div>
+                                </div>
+                                <div class="congrats-box m1 d3">
+                                    <div class="cracker dotted a3"></div>
+                                    <div class="cracker dotted a1 container p1"></div>
+                                </div>
+                                <div class="congrats-box m2 d2">
+                                    <div class="cracker solid a1">    </div>
+                                    <div class="cracker dotted a2"> </div>
+                                </div>
+                            </div>
+                            <div class="congrats-container">
+                                <div class="congrats-box m1">
+                                    <div class="cracker a3"></div>
+                                    <div class="cracker dotted a3"> </div>
+                                </div>
+                            </div>
+                            <div class="congrats-container">
+                                <div class="congrats-box m1 d1">
+                                    <div class="cracker a2"></div>
+                                    <div class="cracker dotted a2"></div>
+                                </div>
+                            </div>
+                            <div class="congrats-container">
+                                <div class="congrats-box m3 d4">
+                                    <div class="cracker solid a2"></div>
+                                    <div class="cracker dotted a3"></div>
+                                </div>
+                            </div>
+                            <div class="congrats-container p1">
+                                <div class="congrats-box m2 d3">
+                                    <div class="cracker solid a1"></div>
+                                    <div class="cracker dotted a2"></div>
+                                </div>
+                            </div>
+                            <div class="congrats-container p2">
+                                <div class="congrats-box m1 d1">
+                                    <div class="cracker a1"></div>
+                                    <div class="cracker dotted a2"> </div>
+                                </div>
+                            </div>
+                            <div class="congrats-container p2">
+                                <div class="congrats-box m3 d2">
+                                    <div class="cracker dotted a4"></div>
+                                    <div class="cracker a2"></div>
+                                </div>
+                            </div>
+                            <div class="congrats-container p3">
+                                <div class="congrats-box m1 d2">
+                                    <div class="cracker a2"></div>
+                                    <div class="cracker a3"></div>
+                                </div>
+                            </div>
+                            <div class="congrats-container p3">
+                                <div class="congrats-box m2 d4">
+                                    <div class="cracker solid a2"></div>
+                                    <div class="cracker a1"></div>
+                                </div>
+                                <div class="congrats-box m1 d3">
+                                    <div class="cracker dotted a3"></div>
+                                    <div class="cracker dotted a1"> </div>
+                                    <div class="container p1"></div>
+                                </div>
+                                <div class="congrats-box m2 d2">
+                                    <div class="cracker solid a1">    </div>
+                                    <div class="cracker dotted a2"> </div>
+                                </div>
+                            </div>
+                            <div class="congrats-container">
+                                <div class="congrats-box m1">
+                                    <div class="cracker a3"></div>
+                                    <div class="cracker dotted a3"> </div>
+                                </div>
+                            </div>
+                            <div class="congrats-container">
+                                <div class="congrats-box m1 d1">
+                                    <div class="cracker a2"></div>
+                                    <div class="cracker dotted a2"></div>
+                                </div>
+                            </div>
+                            <div class="congrats-container">
+                                <div class="congrats-box m3 d4">
+                                    <div class="cracker solid a2"></div>
+                                    <div class="cracker dotted a3"></div>
+                                </div>
+                            </div>
+                            <div class="congrats-container p1">
+                                <div class="congrats-box m2 d3">
+                                    <div class="cracker solid a1"></div>
+                                    <div class="cracker dotted a2"></div>
+                                </div>
+                            </div>
+                            <div class="congrats-container p2">
+                                <div class="congrats-box m1 d1">
+                                    <div class="cracker a1"></div>
+                                    <div class="cracker dotted a2"> </div>
+                                </div>
+                            </div>
+                            <div class="congrats-container p2">
+                                <div class="congrats-box m3 d2">
+                                    <div class="cracker dotted a4"></div>
+                                    <div class="cracker a2"></div>
+                                </div>
+                            </div>
+                            <div class="congrats-container p3">
+                                <div class="congrats-box m1 d2">
+                                    <div class="cracker a2"></div>
+                                    <div class="cracker a3"></div>
+                                </div>
+                            </div>
+                            <div class="congrats-container p3">
+                                <div class="congrats-box m2 d4">
+                                    <div class="cracker solid a2"></div>
+                                    <div class="cracker a1"></div>
+                                </div>
+                                <div class="congrats-box m1 d3">
+                                    <div class="cracker dotted a3"></div>
+                                    <div class="cracker dotted a1"></div>
+                                </div>
+                            </div>
+                            <h1 class="congrats-title">Félicitations !!!</h1>
+                            <p class="congrats-subtitle pulse">Tu a gagné 50 points</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Central Modal  -->
+        </div>
+        <!--Main layout-->
+
+<!-- congratulations -->
+        <script type="text/javascript" src="{{asset('js/congratulations/congratulations.js')}}"></script>
+        <!-- timer -->
+        <script type="text/javascript" src="{{asset('js/timer/timer.js')}}"></script>
+        <!-- playAudioBg -->
+        <script type="text/javascript" src="{{asset('js/audio_bg/playAudioBg.js')}}"></script>
+<!-- script schemator -->
+        <script type="text/javascript" src="{{asset('js/schemator.js')}}"></script>
+
+{% endblock %}

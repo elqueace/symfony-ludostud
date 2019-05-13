@@ -1,0 +1,11 @@
+.blurred{
+  color: transparent;
+  text-shadow: #111 0 0 40px;
+  transition: 0.2s;
+
+  &:hover {
+    color: #111;
+    text-shadow: none;
+  }
+
+}
