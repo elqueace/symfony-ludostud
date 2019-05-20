@@ -1,0 +1,65 @@
+{% extends 'master.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block body %}
+<style>
+.intro{
+height:100%
+}
+
+.left{
+display : flex;
+justify-content : center;
+align-items : center;
+background-color:#3d231b;
+height : 50%;
+color : #FFF;
+
+}
+.right{
+display : flex;
+justify-content : center;
+align-items : center;
+background-color:#FFF;
+height : 50%;
+color : #3d231b;
+}
+@media (max-width: 1200px) {
+.left{
+  height:50%
+}
+.right{
+  height:50%
+}
+}
+
+</style>
+<section class="intro">
+  <div class="row">
+      <div class="col-lg-6 col-sm-12 left">
+        <p>
+          left pannel
+        </p>
+      </div>
+      <div class="col-lg-6 col-sm-12 right">
+        <p>
+          right pannel
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 col-sm-12 left">
+        <p>
+          left pannel
+        </p>
+      </div>
+      <div class="col-lg-6 col-sm-12 right">
+        <p>
+          right pannel
+        </p>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

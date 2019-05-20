@@ -1,76 +1,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
 
 {% include 'partials/styles.html.twig' %}
-<!-- JQuery -->
-<script type="text/javascript" src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
 
-    <style>
-        .div {
-        position: absolute;
-        z-index: 9;
-        }
-        .mydivheader {
-        cursor: move;
-        z-index: 10;
-        }
-        .main-card {
-        height: 450px;
-        }
-
-/*quizz table*/
-.quastion-col{
-width: 30vw;
-}
-
-.answer-col{
-width: 50vw;
-}
-
-.button-col{
-width: 20vw;
-}
-
-.font-white{
-color: white;
-}
-
-tr td {
-font-size:20px;
-
-}
-
-.pic {
-position: relative;
-display: inline-block;
-}
-
-.pic:hover .edit {
-display: block;
-}
-
-.edit {
-padding-top: 7px;
-padding-right: 7px;
-position: absolute;
-right: 0;
-top: 0;
-display: none;
-}
-
-.edit a {
-color: #000;
-}
-
-/*sideNav*/
-.double-nav .breadcrumb-dn {
-  color: #fff;
-}
-.side-nav.wide.slim .sn-ad-avatar-wrapper a span {
-  display: none;
-}
-
-</style>
 </head>

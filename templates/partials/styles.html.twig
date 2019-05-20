@@ -1,6 +1,4 @@
 
-    <!-- Material Design Bootstrap -->
-    <link href="{{asset('css/mdb.min.css')}}" rel="stylesheet">
     <!-- Styles congratulations -->
     <link href="{{asset('css/congratulations.css')}}" rel="stylesheet">
     <!-- Font -->
@@ -11,16 +9,86 @@
     <!-- animation -->
     <link href="{{asset('css/animation.css')}}" rel="stylesheet">
 
-    <!-- Bootstrap core CSS -->
+    <!-- Bootstrap core CSS
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+`-->`
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+
     <!-- Material Design Bootstrap -->
     <link href="{{asset('css/mdb.min.css')}}" rel="stylesheet">
 
     <!-- Font Awesome -->
-     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 
      <!-- for wisywyg -->
      <link href="{{asset('css/summernote.css')}}" rel="stylesheet">
 
      <!-- for custom styles -->
      <link href="{{asset('css/style.css')}}" rel="stylesheet">
+
+     <style>
+         .div {
+         position: absolute;
+         z-index: 9;
+         }
+         .mydivheader {
+         cursor: move;
+         z-index: 10;
+         }
+         .main-card {
+         height: 450px;
+         }
+
+ /*quizz table*/
+ .quastion-col{
+ width: 30vw;
+ }
+
+ .answer-col{
+ width: 50vw;
+ }
+
+ .button-col{
+ width: 20vw;
+ }
+
+ .font-white{
+ color: white;
+ }
+
+ tr td {
+ font-size:20px;
+
+ }
+
+ .pic {
+ position: relative;
+ display: inline-block;
+ }
+
+ .pic:hover .edit {
+ display: block;
+ }
+
+ .edit {
+ padding-top: 7px;
+ padding-right: 7px;
+ position: absolute;
+ right: 0;
+ top: 0;
+ display: none;
+ }
+
+ .edit a {
+ color: #000;
+ }
+
+ /*sideNav*/
+ .double-nav .breadcrumb-dn {
+   color: #fff;
+ }
+ .side-nav.wide.slim .sn-ad-avatar-wrapper a span {
+   display: none;
+ }
+
+ </style>

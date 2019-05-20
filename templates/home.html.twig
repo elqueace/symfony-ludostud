@@ -3,7 +3,6 @@
     {% include 'partials/head.html.twig' %}
 
     <body class="lighten-3" style="background-image: url({{ asset('img/Bg.png')}});background-repeat:repeat;background-attachment:fixed;">
-
       {% include 'partials/navigation.html.twig' %}
 
           <div class="container-fluid">
@@ -11,28 +10,7 @@
               {% endblock %}
           </div>
 
-        <!-- Bootstrap tooltips -->
-        <script type="text/javascript" src="{{asset('js/popper.min.js')}}"></script>
-        <!-- Bootstrap core JavaScript -->
-          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>        <!-- MDB core JavaScript -->
-        <script type="text/javascript" src="{{asset('js/mdb.min.js')}}"></script>
+          {% include 'partials/scripts.html.twig' %}
 
-        <!-- for wisywyg -->
-        <script type="text/javascript" src="{{asset('js/summernote.min.js')}}"></script>
-
-        <!-- for Treeview
-        <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
--->
-
-        <!-- script.js -->
-        <script type="text/javascript" src="{{asset('js/script.js')}}"></script>
-
-
-
-        <script type="text/javascript">
-            // Animations initialization
-            new WOW().init();
-        </script>
-        {% block javascripts %}{% endblock %}
-</body>
+  </body>
 </html>
